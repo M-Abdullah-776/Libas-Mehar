@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=Noto+Nastaliq+Urdu:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-ivory text-charcoal font-body;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background: #A8823D;
+    color: #F7F3EC;
+  }
+
+  :focus-visible {
+    outline: 2px solid #A8823D;
+    outline-offset: 2px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-display;
+    line-height: 1.15;
+  }
+
+  /* Urdu overrides for RTL layout */
+  html[dir="rtl"],
+  html[dir="rtl"] body,
+  html[dir="rtl"] .font-body {
+    font-family: 'Noto Naskh Arabic', 'Inter', system-ui, sans-serif !important;
+  }
+
+  html[dir="rtl"] h1,
+  html[dir="rtl"] h2,
+  html[dir="rtl"] h3,
+  html[dir="rtl"] h4,
+  html[dir="rtl"] h5,
+  html[dir="rtl"] .font-display {
+    font-family: 'Noto Nastaliq Urdu', 'Playfair Display', Georgia, serif !important;
+  }
+
+  html[dir="rtl"] h1,
+  html[dir="rtl"] h2,
+  html[dir="rtl"] h3,
+  html[dir="rtl"] h4,
+  html[dir="rtl"] h5 {
+    line-height: 1.6 !important;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+    bg-charcoal text-ivory
+    px-6 py-3.5 text-xs uppercase tracking-[0.15em] font-body font-medium
+    transition-all duration-300 ease-luxury
+    hover:bg-brass hover:shadow-brass
+    active:scale-95
+    disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2
+    border border-charcoal text-charcoal bg-transparent
+    px-6 py-3.5 text-xs uppercase tracking-[0.15em] font-body font-medium
+    transition-all duration-300 ease-luxury
+    hover:bg-charcoal hover:text-ivory
+    active:scale-95;
+  }
+
+  .btn-brass {
+    @apply inline-flex items-center justify-center gap-2
+    bg-brass text-ivory
+    px-6 py-3.5 text-xs uppercase tracking-[0.15em] font-body font-medium
+    transition-all duration-300 ease-luxury
+    hover:bg-brass-dark hover:shadow-brass
+    active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2
+    text-charcoal bg-transparent
+    px-4 py-2 text-xs uppercase tracking-[0.12em] font-body font-medium
+    transition-colors duration-200
+    hover:text-brass;
+  }
+
+  /* Inputs */
+  .input-luxury {
+    @apply w-full border border-stone bg-ivory
+    px-4 py-3 text-sm text-charcoal placeholder:text-muted
+    transition-colors duration-200
+    focus:outline-none focus:border-brass focus:ring-0;
+  }
+
+  .input-label {
+    @apply block text-xs uppercase tracking-[0.12em] text-muted mb-1.5 font-body;
+  }
+
+  /* Section spacing */
+  .section-pad {
+    @apply py-20 md:py-28;
+  }
+
+  .container-site {
+    @apply max-w-7xl mx-auto px-5 md:px-8;
+  }
+
+  /* Section eyebrow */
+  .eyebrow {
+    @apply text-xs uppercase tracking-[0.2em] text-brass font-body font-medium;
+  }
+
+  /* Dividers */
+  .divider {
+    @apply border-t border-stone;
+  }
+
+  /* Cards */
+  .product-card-hover {
+    @apply group relative overflow-hidden;
+  }
+
+  .product-card-hover img {
+    @apply transition-transform duration-700 ease-luxury group-hover:scale-105;
+  }
+
+  /* Admin sidebar link */
+  .admin-nav-link {
+    @apply flex items-center gap-3 px-4 py-3 text-sm text-stone rounded-lg
+    transition-all duration-200
+    hover:bg-charcoal-light hover:text-ivory;
+  }
+
+  .admin-nav-link.active {
+    @apply bg-brass text-ivory;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-brass {
+    @apply badge bg-brass/15 text-brass-dark;
+  }
+
+  .badge-success {
+    @apply badge bg-success/15 text-success;
+  }
+
+  .badge-error {
+    @apply badge bg-error/15 text-error;
+  }
+
+  .badge-stone {
+    @apply badge bg-stone text-charcoal;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  /* Grid row span helpers for DisciplinesGrid */
+  .md\:row-span-2 {
+    grid-row: span 2 / span 2;
+  }
+
+  /* Hover brightness filter */
+  .hover\:brightness-110:hover {
+    filter: brightness(1.1);
+  }
+
+  /* Text stroke for large display headings */
+  .text-stroke {
+    -webkit-text-stroke: 1px currentColor;
+    color: transparent;
+  }
+}
+
+/* Announcement bar ticker */
+.ticker-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-content {
+  display: inline-flex;
+  animation: ticker 35s linear infinite;
+  will-change: transform;
+}
+.ticker-content:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Cart drawer overlay */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 26, 23, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 49;
+  animation: fadeIn 0.2s ease forwards;
+}
+
+/* Product image zoom container */
+.img-zoom-container {
+  overflow: hidden;
+}
+.img-zoom-container img {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.img-zoom-container:hover img {
+  transform: scale(1.06);
+}
+
+/* Admin table */
+.admin-table {
+  @apply w-full text-sm;
+}
+.admin-table th {
+  @apply text-left text-xs uppercase tracking-[0.12em] text-muted font-medium
+  px-4 py-3 border-b border-stone bg-cream;
+}
+.admin-table td {
+  @apply px-4 py-4 border-b border-stone/50 text-charcoal;
+}
+.admin-table tr:hover td {
+  @apply bg-cream/50;
+}
+
+/* Page transition */
+.page-enter {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* Shimmer skeleton loader */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #EDE8DF 25%, #F7F3EC 50%, #EDE8DF 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Fade-up reveal for sections */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fadeUp 0.6s ease forwards;
+}
+
+/* Scale reveal */
+@keyframes scaleIn {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.animate-scale-in {
+  animation: scaleIn 0.5s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .ticker-content {
+    animation: none;
+  }
+}

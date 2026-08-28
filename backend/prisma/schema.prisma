@@ -1,0 +1,241 @@
+// Libas Mehar — Database Schema
+// SQLite + Prisma (local dev)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ---------- USERS & AUTH ----------
+
+model User {
+  id            String    @id @default(uuid())
+  name          String
+  email         String    @unique
+  phone         String?
+  passwordHash  String
+  role          String    @default("CUSTOMER")  // "CUSTOMER" | "ADMIN"
+  avatar        String?
+  addresses     Address[]
+  orders        Order[]
+  cart          Cart?
+  giftBoxes     GiftBox[]
+  reviews       Review[]
+  wishlistItems WishlistItem[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Address {
+  id         String   @id @default(uuid())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String
+  fullName   String
+  phone      String
+  street     String
+  city       String
+  province   String
+  postalCode String?
+  isDefault  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+}
+
+// ---------- CATALOG ----------
+
+model Discipline {
+  id          String       @id @default(uuid())
+  name        String       @unique
+  slug        String       @unique
+  description String?
+  sortOrder   Int          @default(0)
+  collections Collection[]
+}
+
+model Collection {
+  id           String      @id @default(uuid())
+  name         String
+  slug         String      @unique
+  tagline      String?
+  discipline   Discipline  @relation(fields: [disciplineId], references: [id])
+  disciplineId String
+  heroImageUrl String?
+  products     Product[]
+  createdAt    DateTime    @default(now())
+}
+
+model Product {
+  id            String          @id @default(uuid())
+  name          String
+  slug          String          @unique
+  description   String
+  basePrice     Decimal
+  collection    Collection      @relation(fields: [collectionId], references: [id])
+  collectionId  String
+  images        ProductImage[]
+  variants      ProductVariant[]
+  isBestseller  Boolean         @default(false)
+  isActive      Boolean         @default(true)
+  stitchOptions StitchOption[]
+  cartItems     CartItem[]
+  orderItems    OrderItem[]
+  reviews       Review[]
+  wishlistItems WishlistItem[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  @@index([collectionId])
+}
+
+model ProductImage {
+  id        String  @id @default(uuid())
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
+  url       String
+  altText   String?
+  sortOrder Int     @default(0)
+}
+
+model ProductVariant {
+  id         String      @id @default(uuid())
+  product    Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId  String
+  color      String?
+  size       String?
+  sku        String      @unique
+  stock      Int         @default(0)
+  priceDelta Decimal     @default(0)
+  cartItems  CartItem[]
+  orderItems OrderItem[]
+
+  @@index([productId])
+}
+
+model StitchOption {
+  id        String  @id @default(uuid())
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
+  name      String
+  extraCost Decimal @default(0)
+}
+
+// ---------- GIFT BOX COMPOSER ----------
+
+model GiftBox {
+  id            String          @id @default(uuid())
+  user          User?           @relation(fields: [userId], references: [id])
+  userId        String?
+  components    GiftBoxItem[]
+  totalPrice    Decimal
+  status        String          @default("DRAFT")  // "DRAFT" | "ADDED_TO_CART" | "ORDERED"
+  createdAt     DateTime        @default(now())
+}
+
+model GiftBoxItem {
+  id         String   @id @default(uuid())
+  giftBox    GiftBox  @relation(fields: [giftBoxId], references: [id], onDelete: Cascade)
+  giftBoxId  String
+  productId  String
+  variantId  String?
+  category   String   // "fabric" | "fragrance" | "leather"
+}
+
+// ---------- CART ----------
+
+model Cart {
+  id        String     @id @default(uuid())
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String     @unique
+  items     CartItem[]
+  updatedAt DateTime   @updatedAt
+}
+
+model CartItem {
+  id         String          @id @default(uuid())
+  cart       Cart            @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  cartId     String
+  product    Product         @relation(fields: [productId], references: [id])
+  productId  String
+  variant    ProductVariant? @relation(fields: [variantId], references: [id])
+  variantId  String?
+  quantity   Int             @default(1)
+  note       String?
+
+  @@unique([cartId, productId, variantId])
+}
+
+// ---------- ORDERS ----------
+
+model Order {
+  id              String        @id @default(uuid())
+  orderNumber     String        @unique
+  user            User          @relation(fields: [userId], references: [id])
+  userId          String
+  items           OrderItem[]
+  subtotal        Decimal
+  shippingCost    Decimal       @default(0)
+  discount        Decimal       @default(0)
+  total           Decimal
+  paymentMethod   String        // "COD" | "CARD" | "JAZZCASH" | "EASYPAISA"
+  paymentStatus   String        @default("PENDING")  // "PENDING" | "PAID" | "FAILED" | "REFUNDED"
+  orderStatus     String        @default("PLACED")   // "PLACED" | "CONFIRMED" | "SHIPPED" | "DELIVERED" | "CANCELLED"
+  shippingAddress String        // JSON stored as string
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model OrderItem {
+  id         String          @id @default(uuid())
+  order      Order           @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId    String
+  product    Product         @relation(fields: [productId], references: [id])
+  productId  String
+  variant    ProductVariant? @relation(fields: [variantId], references: [id])
+  variantId  String?
+  quantity   Int
+  priceAtPurchase Decimal
+}
+
+// ---------- NEWSLETTER ----------
+
+model NewsletterSubscriber {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+// ---------- REVIEWS ----------
+
+model Review {
+  id                 String   @id @default(uuid())
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId             String
+  product            Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId          String
+  rating             Int      // 1 to 5
+  title              String?
+  comment            String
+  isVerifiedPurchase Boolean  @default(false)
+  createdAt          DateTime @default(now())
+
+  @@index([productId])
+  @@index([userId])
+}
+
+// ---------- WISHLIST ----------
+
+model WishlistItem {
+  id        String   @id @default(uuid())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId])
+  @@index([userId])
+}
+
