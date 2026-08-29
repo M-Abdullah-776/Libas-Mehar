@@ -35,13 +35,25 @@ app.use(
     },
   })
 );
+const clientUrls = (process.env.CLIENT_URL || '')
+  .split(',')
+  .map((url) => url.trim().replace(/\/$/, ''))
+  .filter(Boolean);
+
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || process.env.NODE_ENV !== 'production' || origin === process.env.CLIENT_URL) {
+      const normalizedOrigin = origin ? origin.replace(/\/$/, '') : null;
+      if (
+        !origin ||
+        process.env.NODE_ENV !== 'production' ||
+        clientUrls.length === 0 ||
+        clientUrls.includes(normalizedOrigin) ||
+        clientUrls.includes('*')
+      ) {
         callback(null, true);
       } else {
-        callback(new Error('Not allowed by CORS'));
+        callback(new Error(`Not allowed by CORS: ${origin}`));
       }
     },
     credentials: true,
