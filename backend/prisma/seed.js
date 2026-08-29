@@ -3,22 +3,29 @@ const bcrypt = require('bcrypt');
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('🧹 Cleaning existing tables...');
-  
-  await prisma.review.deleteMany({});
-  await prisma.wishlistItem.deleteMany({});
-  await prisma.orderItem.deleteMany({});
-  await prisma.order.deleteMany({});
-  await prisma.cartItem.deleteMany({});
-  await prisma.cart.deleteMany({});
-  await prisma.giftBoxItem.deleteMany({});
-  await prisma.giftBox.deleteMany({});
-  await prisma.stitchOption.deleteMany({});
-  await prisma.productImage.deleteMany({});
-  await prisma.productVariant.deleteMany({});
-  await prisma.product.deleteMany({});
-  await prisma.collection.deleteMany({});
-  await prisma.discipline.deleteMany({});
+  const count = await prisma.discipline.count();
+  if (count > 0) {
+    console.log('🌱 Database already seeded. Ensuring admin account exists...');
+    const adminEmail = 'admin@libasmehar.com';
+    const existing = await prisma.user.findUnique({ where: { email: adminEmail } });
+    if (!existing) {
+      const hash = await bcrypt.hash('Admin@1234', 12);
+      await prisma.user.create({
+        data: {
+          name: 'Libas Mehar Admin',
+          email: adminEmail,
+          passwordHash: hash,
+          role: 'ADMIN',
+        },
+      });
+      console.log('✅ Admin account created!');
+    } else {
+      console.log('✅ Admin account already exists!');
+    }
+    return;
+  }
+
+  console.log('🧹 Database empty. Cleaning and seeding initial tables...');
 
   // ──────────────────────────────────────────
   // 1. ADMIN ACCOUNT
