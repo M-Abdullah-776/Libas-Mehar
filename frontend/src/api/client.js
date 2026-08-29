@@ -4,8 +4,16 @@ const defaultBaseURL = typeof window !== 'undefined'
   ? `${window.location.protocol}//${window.location.hostname}:4000/api`
   : 'http://localhost:4000/api';
 
+function getApiBaseUrl() {
+  let url = (import.meta.env.VITE_API_URL || defaultBaseURL).trim().replace(/\/$/, '');
+  if (!url.endsWith('/api')) {
+    url = `${url}/api`;
+  }
+  return url;
+}
+
 const client = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || defaultBaseURL,
+  baseURL: getApiBaseUrl(),
 });
 
 client.interceptors.request.use((config) => {
@@ -44,7 +52,7 @@ client.interceptors.response.use(
       if (!refreshToken) throw new Error('No refresh token');
 
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL || 'http://localhost:4000/api'}/auth/refresh`,
+        `${getApiBaseUrl()}/auth/refresh`,
         { refreshToken }
       );
 

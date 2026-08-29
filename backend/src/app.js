@@ -66,23 +66,23 @@ app.use(morgan('dev'));
 // Serve uploads statically
 app.use('/uploads', express.static(path.join(__dirname, '..', 'public', 'uploads')));
 
-app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
+app.get(['/api/health', '/health'], (req, res) => res.json({ status: 'ok' }));
 
-app.use('/api/auth', authRoutes);
-app.use('/api/addresses', addressRoutes);
-app.use('/api/disciplines', disciplineRoutes);   // Fabric / Leather / Fragrance / Gift Box
-app.use('/api/collections', collectionRoutes);   // Egyptian Giza, Blue Mint, etc.
-app.use('/api/products', productRoutes);
-app.use('/api/cart', cartRoutes);
-app.use('/api/gift-box', giftBoxRoutes);         // "Compose a Box" feature
-app.use('/api/orders', orderRoutes);
-app.use('/api/newsletter', newsletterRoutes);
-app.use('/api/admin', adminRoutes);              // Admin-only routes
-app.use('/api/reviews', reviewRoutes);
-app.use('/api/wishlist', wishlistRoutes);
-app.use('/api/settings', settingsRoutes);
-app.use('/api/chat', chatRoutes);
-app.use('/api/upload', uploadRoutes);
+app.use(['/api/auth', '/auth'], authRoutes);
+app.use(['/api/addresses', '/addresses'], addressRoutes);
+app.use(['/api/disciplines', '/disciplines'], disciplineRoutes);   // Fabric / Leather / Fragrance / Gift Box
+app.use(['/api/collections', '/collections'], collectionRoutes);   // Egyptian Giza, Blue Mint, etc.
+app.use(['/api/products', '/products'], productRoutes);
+app.use(['/api/cart', '/cart'], cartRoutes);
+app.use(['/api/gift-box', '/gift-box'], giftBoxRoutes);         // "Compose a Box" feature
+app.use(['/api/orders', '/orders'], orderRoutes);
+app.use(['/api/newsletter', '/newsletter'], newsletterRoutes);
+app.use(['/api/admin', '/admin'], adminRoutes);              // Admin-only routes
+app.use(['/api/reviews', '/reviews'], reviewRoutes);
+app.use(['/api/wishlist', '/wishlist'], wishlistRoutes);
+app.use(['/api/settings', '/settings'], settingsRoutes);
+app.use(['/api/chat', '/chat'], chatRoutes);
+app.use(['/api/upload', '/upload'], uploadRoutes);
 
 app.use((req, res) => res.status(404).json({ error: 'Route not found' }));
 app.use(errorHandler);
