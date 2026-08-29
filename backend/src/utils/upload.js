@@ -36,24 +36,29 @@ async function saveBase64Image(base64Str, subfolder = 'general') {
   }
 
   // Local disk fallback
-  const matches = base64Str.match(/^data:image\/([A-Za-z-+\/]+);base64,(.+)$/);
-  if (!matches || matches.length !== 3) {
-    throw new Error('Invalid base64 image format');
+  try {
+    const matches = base64Str.match(/^data:image\/([A-Za-z-+\/]+);base64,(.+)$/);
+    if (!matches || matches.length !== 3) {
+      return base64Str;
+    }
+
+    const extension = matches[1] === 'jpeg' ? 'jpg' : matches[1];
+    const base64Data = matches[2];
+    const buffer = Buffer.from(base64Data, 'base64');
+
+    const uploadDir = path.join(__dirname, '..', '..', 'public', 'uploads', subfolder);
+    fs.mkdirSync(uploadDir, { recursive: true });
+
+    const filename = `${nanoid()}.${extension}`;
+    const filePath = path.join(uploadDir, filename);
+
+    fs.writeFileSync(filePath, buffer);
+
+    return `/uploads/${subfolder}/${filename}`;
+  } catch (err) {
+    console.warn('Local disk image write fallback to base64 data URI:', err.message);
+    return base64Str;
   }
-
-  const extension = matches[1] === 'jpeg' ? 'jpg' : matches[1];
-  const base64Data = matches[2];
-  const buffer = Buffer.from(base64Data, 'base64');
-
-  const uploadDir = path.join(__dirname, '..', '..', 'public', 'uploads', subfolder);
-  fs.mkdirSync(uploadDir, { recursive: true });
-
-  const filename = `${nanoid()}.${extension}`;
-  const filePath = path.join(uploadDir, filename);
-
-  fs.writeFileSync(filePath, buffer);
-
-  return `/uploads/${subfolder}/${filename}`;
 }
 
 /**

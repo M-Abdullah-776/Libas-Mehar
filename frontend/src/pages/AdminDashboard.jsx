@@ -854,50 +854,66 @@ function ProductsPanel() {
 
             <div>
               <label className="input-label">Primary Image *</label>
-              <div className="flex gap-3 items-center">
+              <div className="flex gap-3 items-start">
                 {form.imageUrl && (
-                  <img src={getImageUrl(form.imageUrl)} alt="Primary Preview" className="w-12 h-16 object-cover border border-stone bg-cream flex-shrink-0" />
+                  <img src={getImageUrl(form.imageUrl)} alt="Primary Preview" className="w-14 h-18 object-cover border border-stone bg-cream flex-shrink-0" />
                 )}
-                <input
-                  type="file"
-                  accept="image/*"
-                  capture="environment"
-                  className="w-full border border-stone bg-cream px-3 py-2 text-xs text-charcoal min-h-[48px] flex items-center"
-                  onChange={(e) => {
-                    const file = e.target.files[0];
-                    if (file) {
-                      const reader = new FileReader();
-                      reader.onloadend = () => {
-                        setForm(f => ({ ...f, imageUrl: reader.result }));
-                      };
-                      reader.readAsDataURL(file);
-                    }
-                  }}
-                />
+                <div className="flex-1 space-y-2">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="w-full border border-stone bg-cream px-3 py-2 text-xs text-charcoal min-h-[44px] flex items-center"
+                    onChange={(e) => {
+                      const file = e.target.files[0];
+                      if (file) {
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                          setForm(f => ({ ...f, imageUrl: reader.result }));
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    }}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Or paste Image URL (https://...)"
+                    value={form.imageUrl && !form.imageUrl.startsWith('data:') ? form.imageUrl : ''}
+                    onChange={(e) => setForm(f => ({ ...f, imageUrl: e.target.value }))}
+                    className="w-full border border-stone bg-cream px-3 py-2 text-xs text-charcoal outline-none focus:border-brass min-h-[38px]"
+                  />
+                </div>
               </div>
             </div>
             <div>
               <label className="input-label">Secondary Image</label>
-              <div className="flex gap-3 items-center">
+              <div className="flex gap-3 items-start">
                 {form.imageUrl2 && (
-                  <img src={getImageUrl(form.imageUrl2)} alt="Secondary Preview" className="w-12 h-16 object-cover border border-stone bg-cream flex-shrink-0" />
+                  <img src={getImageUrl(form.imageUrl2)} alt="Secondary Preview" className="w-14 h-18 object-cover border border-stone bg-cream flex-shrink-0" />
                 )}
-                <input
-                  type="file"
-                  accept="image/*"
-                  capture="environment"
-                  className="w-full border border-stone bg-cream px-3 py-2 text-xs text-charcoal min-h-[48px] flex items-center"
-                  onChange={(e) => {
-                    const file = e.target.files[0];
-                    if (file) {
-                      const reader = new FileReader();
-                      reader.onloadend = () => {
-                        setForm(f => ({ ...f, imageUrl2: reader.result }));
-                      };
-                      reader.readAsDataURL(file);
-                    }
-                  }}
-                />
+                <div className="flex-1 space-y-2">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="w-full border border-stone bg-cream px-3 py-2 text-xs text-charcoal min-h-[44px] flex items-center"
+                    onChange={(e) => {
+                      const file = e.target.files[0];
+                      if (file) {
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                          setForm(f => ({ ...f, imageUrl2: reader.result }));
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    }}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Or paste Image URL (https://...)"
+                    value={form.imageUrl2 && !form.imageUrl2.startsWith('data:') ? form.imageUrl2 : ''}
+                    onChange={(e) => setForm(f => ({ ...f, imageUrl2: e.target.value }))}
+                    className="w-full border border-stone bg-cream px-3 py-2 text-xs text-charcoal outline-none focus:border-brass min-h-[38px]"
+                  />
+                </div>
               </div>
             </div>
             <div>
@@ -1074,26 +1090,34 @@ function CollectionsPanel() {
 
             <div>
               <label className="input-label">Hero Image *</label>
-              <div className="flex gap-3 items-center">
+              <div className="flex gap-3 items-start">
                 {form.heroImageUrl && (
-                  <img src={getImageUrl(form.heroImageUrl)} alt="Hero Preview" className="w-12 h-12 object-cover border border-stone bg-cream flex-shrink-0" />
+                  <img src={getImageUrl(form.heroImageUrl)} alt="Hero Preview" className="w-14 h-14 object-cover border border-stone bg-cream flex-shrink-0" />
                 )}
-                <input
-                  type="file"
-                  accept="image/*"
-                  capture="environment"
-                  className="w-full border border-stone bg-cream px-3 py-2 text-xs text-charcoal min-h-[48px] flex items-center"
-                  onChange={(e) => {
-                    const file = e.target.files[0];
-                    if (file) {
-                      const reader = new FileReader();
-                      reader.onloadend = () => {
-                        setForm(f => ({ ...f, heroImageUrl: reader.result }));
-                      };
-                      reader.readAsDataURL(file);
-                    }
-                  }}
-                />
+                <div className="flex-1 space-y-2">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="w-full border border-stone bg-cream px-3 py-2 text-xs text-charcoal min-h-[44px] flex items-center"
+                    onChange={(e) => {
+                      const file = e.target.files[0];
+                      if (file) {
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                          setForm(f => ({ ...f, heroImageUrl: reader.result }));
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    }}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Or paste Image URL (https://...)"
+                    value={form.heroImageUrl && !form.heroImageUrl.startsWith('data:') ? form.heroImageUrl : ''}
+                    onChange={(e) => setForm(f => ({ ...f, heroImageUrl: e.target.value }))}
+                    className="w-full border border-stone bg-cream px-3 py-2 text-xs text-charcoal outline-none focus:border-brass min-h-[38px]"
+                  />
+                </div>
               </div>
             </div>
 
