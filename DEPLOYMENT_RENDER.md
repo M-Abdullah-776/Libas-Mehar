@@ -26,7 +26,7 @@ The repository includes a ready-to-use [`render.yaml`](file:///c:/Users/hp/Downl
 
 3. **Deploy via Blueprint**:
    - Click **New +** in the top right corner and select **Blueprint**.
-   - Connect your GitHub / GitLab account and select your repository (`anwar-clothing` / `Libas-Mehar`).
+   - Connect your GitHub / GitLab account and select your repository (`Anwar-Clothing`).
    - Give your Blueprint instance a name (e.g. `libas-mehar-stack`).
    - Render will parse `render.yaml` and list 3 resources to be created:
      - `libas-mehar-db` (PostgreSQL Database)
