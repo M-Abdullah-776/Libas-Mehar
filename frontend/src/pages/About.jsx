@@ -22,7 +22,7 @@ export default function About() {
       {/* Hero Section */}
       <section className="relative py-20 md:py-28 border-b border-stone/30 bg-stone/5">
         <div className="container-site max-w-4xl text-center">
-          <p className="eyebrow text-brass mb-3 uppercase tracking-[0.25em]">Libas Mehar</p>
+          <p className="eyebrow text-brass mb-3 uppercase tracking-[0.25em]">Anwar Clothing</p>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl mb-6">
             {t('about.title')}
           </h1>

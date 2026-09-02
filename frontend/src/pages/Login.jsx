@@ -48,7 +48,7 @@ export default function Login() {
         {/* Header */}
         <div className="text-center mb-10">
           <Link to="/" className="font-display text-2xl text-charcoal">
-            Libas <span className="italic text-brass">Mehar</span>
+            Anwar <span className="italic text-brass">Clothing</span>
           </Link>
           <p className="eyebrow mt-6 mb-2">{t('auth.welcomeBack')}</p>
           <h1 className="font-display text-display-sm">{t('auth.signInTitle')}</h1>

@@ -44,7 +44,7 @@ export default function ThreeDViewer({ colorName, productName }) {
     const height = containerRef.current.clientHeight || 400;
 
     const scene = new THREE.Scene();
-    // Warm background gradient to match Libas Mehar's premium aesthetic
+    // Warm background gradient to match Anwar Clothing's premium aesthetic
     scene.background = new THREE.Color('#FAF8F5');
     scene.fog = new THREE.FogExp2('#FAF8F5', 0.05);
 

@@ -55,7 +55,7 @@ export default function ChatWidget() {
       {
         id: 'welcome',
         type: 'bot',
-        text: '👋 Hi there! Welcome to Libas Mehar.\nHow can we help you today?',
+        text: '👋 Hi there! Welcome to Anwar Clothing.\nHow can we help you today?',
         time: new Date(),
       },
     ]);
@@ -172,7 +172,7 @@ export default function ChatWidget() {
             <div className="flex items-center gap-2.5">
               <div className="w-2.5 h-2.5 rounded-full bg-brass animate-pulse" />
               <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-brass font-semibold">Libas Mehar Support</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-brass font-semibold">Anwar Clothing Support</p>
                 <p className="text-[10px] text-ivory/60 mt-0.5">
                   {isOffline ? 'Offline · Reply within 4h' : 'Online · Quick replies ready'}
                 </p>

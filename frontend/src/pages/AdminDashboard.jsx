@@ -574,7 +574,7 @@ function NewsletterPanel() {
     const blob = new Blob([csv], { type: 'text/csv' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = 'libas-mehar-newsletter-subscribers.csv';
+    a.download = 'anwar-clothing-newsletter-subscribers.csv';
     a.click();
   };
 
@@ -1527,7 +1527,7 @@ export default function AdminDashboard() {
 
         {/* Center - Store name */}
         <Link to="/" className="font-display text-lg tracking-wide text-charcoal font-semibold">
-          Libas <span className="italic text-brass">Mehar</span>
+          Anwar <span className="italic text-brass">Clothing</span>
         </Link>
 
         {/* Right - Notification Bell */}
@@ -1559,7 +1559,7 @@ export default function AdminDashboard() {
           <div className="px-5 py-5 border-b border-ivory/10 flex items-center justify-between">
             <div>
               <span className="font-display text-xl text-ivory block">
-                Libas <span className="italic text-brass">Mehar</span>
+                Anwar <span className="italic text-brass">Clothing</span>
               </span>
               <p className="text-xs text-ivory/40 mt-1 uppercase tracking-wider">Super Admin</p>
             </div>

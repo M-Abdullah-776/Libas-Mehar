@@ -1,4 +1,4 @@
-// Libas Mehar — Database Schema
+// Anwar Clothing — Database Schema
 // SQLite + Prisma (local dev)
 
 generator client {

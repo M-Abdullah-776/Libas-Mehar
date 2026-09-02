@@ -45,7 +45,7 @@ export default function ClientCare() {
       <div className="text-center mb-10">
         <span className="text-xs uppercase tracking-widest text-brass font-semibold">Client Care</span>
         <h1 className="font-display text-4xl text-charcoal mt-2">At Your Service</h1>
-        <p className="text-muted text-sm mt-2">Everything you need to know about shopping at Libas Mehar</p>
+        <p className="text-muted text-sm mt-2">Everything you need to know about shopping at Anwar Clothing</p>
       </div>
 
       {/* Tab Switcher Buttons */}
@@ -166,7 +166,7 @@ export default function ClientCare() {
               <div className="space-y-3.5 text-sm">
                 <div>
                   <strong className="text-muted text-xs uppercase tracking-wider block">Atelier Address</strong>
-                  <p className="text-charcoal mt-0.5">Libas Mehar Atelier,<br />Gulberg III, Lahore, Pakistan</p>
+                  <p className="text-charcoal mt-0.5">Anwar Clothing Atelier,<br />Gulberg III, Lahore, Pakistan</p>
                 </div>
                 <div>
                   <strong className="text-muted text-xs uppercase tracking-wider block">Phone & WhatsApp</strong>
@@ -174,7 +174,7 @@ export default function ClientCare() {
                 </div>
                 <div>
                   <strong className="text-muted text-xs uppercase tracking-wider block">Customer Support Email</strong>
-                  <p className="text-charcoal mt-0.5">support@libasmehar.com</p>
+                  <p className="text-charcoal mt-0.5">support@anwarclothing.com</p>
                 </div>
               </div>
             </div>

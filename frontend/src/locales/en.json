@@ -25,7 +25,7 @@
     "theHouse": "The House",
     "clientCare": "Client Care",
     "whatsappSupport": "WhatsApp Support",
-    "rightsReserved": "© {year} Libas Mehar. All rights reserved.",
+    "rightsReserved": "© {year} Anwar Clothing. All rights reserved.",
     "codBanner": "COD · Secure Payments · Pakistan-wide Delivery",
     "house": {
       "story": "The Founder's Story",
@@ -62,7 +62,7 @@
     "secureCheckout": "🔒 Secure Checkout · Cash on Delivery"
   },
   "home": {
-    "heroSubtitle": "Libas Mehar — Est. Pakistan",
+    "heroSubtitle": "Anwar Clothing — Est. Pakistan",
     "heroTitleNormal": "Dressed With ",
     "heroTitleItalic": "Purpose.",
     "heroDescription": "Heritage unstitched fabrics, stitched kurtas, and custom tailoring for Men, Women, and Kids — held to a standard worth naming.",
@@ -77,7 +77,7 @@
     "collectionDesc": "Each collection is curated around a fabric, a season, and a purpose.",
     "shopNow": "Shop Now →",
     "whatWeMake": "What We Make",
-    "fourHouses": "The Premium Categories of Libas Mehar",
+    "fourHouses": "The Premium Categories of Anwar Clothing",
     "fourHousesDesc": "From custom tailoring to raw fabrics, each category is curated for lasting distinction.",
     "explore": "Explore →",
     "manTagline": "Men's Heritage Tailoring",
@@ -127,7 +127,7 @@
       "beginComposing": "Begin Composing"
     },
     "founderNote": "Founder's Note",
-    "founderQuote": "I started Libas Mehar to give people the quality I always looked for — and rarely found close to home.",
+    "founderQuote": "I started Anwar Clothing to give people the quality I always looked for — and rarely found close to home.",
     "founderName": "— Mehar, Founder",
     "values": {
       "v1Title": "Craft First",
@@ -222,7 +222,7 @@
     "signIn": "Sign In",
     "creatingAccount": "Creating account…",
     "createAccount": "Create Account",
-    "newUser": "New to Libas Mehar?",
+    "newUser": "New to Anwar Clothing?",
     "createOne": "Create an account",
     "alreadyHaveAccount": "Already have an account?",
     "signInLink": "Sign in",
@@ -267,19 +267,19 @@
     "payment": "Payment"
   },
   "about": {
-    "title": "The House of Libas Mehar",
+    "title": "The House of Anwar Clothing",
     "subtitle": "A legacy of craftsmanship, patience, and uncompromising quality.",
     "storyTitle": "The Founder's Story",
-    "storyPara1": "Libas Mehar was born out of a simple, persistent quest: to discover and preserve the true definition of premium quality. Our founder set out to create a house that honors ancestral craftsmanship while styling the modern individual.",
+    "storyPara1": "Anwar Clothing was born out of a simple, persistent quest: to discover and preserve the true definition of premium quality. Our founder set out to create a house that honors ancestral craftsmanship while styling the modern individual.",
     "storyPara2": "What started as a search for the perfect unstitched fabric has grown into a curated destination for fine Egyptian Giza cotton, Chinese spun silk, and bespoke tailoring. Each piece represents a commitment to luxury that is felt, not just seen.",
     "standardsTitle": "Our Standards",
-    "standardsPara": "We believe that luxury lies in the details. From selecting extra-long-staple cotton fibers to precision double-needle stitching, we never rush the process. If it is not worthy of the Libas Mehar name, it does not leave our house.",
+    "standardsPara": "We believe that luxury lies in the details. From selecting extra-long-staple cotton fibers to precision double-needle stitching, we never rush the process. If it is not worthy of the Anwar Clothing name, it does not leave our house.",
     "craftTitle": "Craftsmanship",
     "craftPara": "Our suits are custom-stitched by master tailors, and our fabrics are woven with ancestral precision. We embrace slow fashion, ensuring every seam, fold, and collar is refined to perfection.",
     "pressTitle": "Press & Recognition",
     "pressQuote1": "\"An elegant renaissance of Pakistani luxury and heritage.\"",
     "pressSource1": "— The Editorial Herald",
-    "pressQuote2": "\"Craftsmanship at its absolute peak. Libas Mehar sets a new baseline for local luxury.\"",
+    "pressQuote2": "\"Craftsmanship at its absolute peak. Anwar Clothing sets a new baseline for local luxury.\"",
     "pressSource2": "— Apparel Weekly"
   }
 }

@@ -6,22 +6,22 @@ async function main() {
   const count = await prisma.discipline.count();
   if (count > 0) {
     console.log('🌱 Database already seeded. Ensuring admin account exists...');
-    const adminEmail = 'admin@libasmehar.com';
-    const existing = await prisma.user.findUnique({ where: { email: adminEmail } });
-    if (!existing) {
-      const hash = await bcrypt.hash('Admin@1234', 12);
-      await prisma.user.create({
-        data: {
-          name: 'Libas Mehar Admin',
-          email: adminEmail,
-          passwordHash: hash,
-          role: 'ADMIN',
-        },
-      });
-      console.log('✅ Admin account created!');
-    } else {
-      console.log('✅ Admin account already exists!');
-    }
+  const adminEmail = 'admin@anwarclothing.com';
+  let existing = await prisma.user.findUnique({ where: { email: adminEmail } });
+  if (!existing) {
+    const hash = await bcrypt.hash('Admin@1234', 12);
+    await prisma.user.create({
+      data: {
+        name: 'Anwar Clothing Admin',
+        email: adminEmail,
+        passwordHash: hash,
+        role: 'ADMIN',
+      },
+    });
+    console.log('✅ Admin account created (admin@anwarclothing.com)!');
+  } else {
+    console.log('✅ Admin account already exists (admin@anwarclothing.com)!');
+  }
     return;
   }
 
@@ -30,13 +30,13 @@ async function main() {
   // ──────────────────────────────────────────
   // 1. ADMIN ACCOUNT
   // ──────────────────────────────────────────
-  const adminEmail = 'admin@libasmehar.com';
+  const adminEmail = 'admin@anwarclothing.com';
   const existing = await prisma.user.findUnique({ where: { email: adminEmail } });
   if (!existing) {
     const hash = await bcrypt.hash('Admin@1234', 12);
     await prisma.user.create({
       data: {
-        name: 'Libas Mehar Admin',
+        name: 'Anwar Clothing Admin',
         email: adminEmail,
         passwordHash: hash,
         role: 'ADMIN',

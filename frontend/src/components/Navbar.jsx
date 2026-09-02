@@ -157,10 +157,10 @@ export default function Navbar() {
 
             {/* ── CENTER: brand logo ───────────────────────────────────── */}
             <div className="flex justify-center">
-              <Link to="/" aria-label="Libas Mehar — Home">
+              <Link to="/" aria-label="Anwar Clothing — Home">
                 <img
                   src="/logo.png"
-                  alt="Libas Mehar"
+                  alt="Anwar Clothing"
                   className="h-10 md:h-12 w-auto object-contain mix-blend-multiply"
                   width="48"
                   height="48"
@@ -350,7 +350,7 @@ export default function Navbar() {
           <div className="fixed inset-y-0 right-0 w-72 bg-ivory z-50 flex flex-col shadow-luxury-xl md:hidden">
             {/* Drawer header */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-stone">
-              <img src="/logo.png" alt="Libas Mehar" className="h-9 w-auto object-contain mix-blend-multiply" width="36" height="36" />
+              <img src="/logo.png" alt="Anwar Clothing" className="h-9 w-auto object-contain mix-blend-multiply" width="36" height="36" />
               <button onClick={() => setMenuOpen(false)} className="text-muted hover:text-charcoal p-2" aria-label="Close menu">
                 <CloseIcon />
               </button>

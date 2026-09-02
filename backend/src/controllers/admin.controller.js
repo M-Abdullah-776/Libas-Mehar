@@ -322,7 +322,7 @@ exports.sendNewsletter = async (req, res, next) => {
           <div style="max-width:600px;margin:0 auto;background:#fff;border:1px solid #DDD5C7;padding:40px;">
             <div style="text-align:center;margin-bottom:30px;border-bottom:1px solid #DDD5C7;padding-bottom:20px;">
               <h1 style="color:#1C1A17;font-size:26px;margin:0;font-weight:normal;letter-spacing:1px;">
-                Libas <span style="font-style:italic;color:#A8823D;">Mehar</span>
+                Anwar <span style="font-style:italic;color:#A8823D;">Clothing</span>
               </h1>
             </div>
             <div style="font-size:15px;color:#1C1A17;line-height:1.6;">
@@ -330,7 +330,7 @@ exports.sendNewsletter = async (req, res, next) => {
             </div>
             <p style="text-align:center;font-size:12px;color:#6B6560;margin-top:40px;border-top:1px dashed #DDD5C7;padding-top:15px;">
               You received this email because you subscribed to our newsletter.<br>
-              <strong>Team Libas Mehar</strong>
+              <strong>Team Anwar Clothing</strong>
             </p>
           </div>
         </div>

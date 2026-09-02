@@ -1,4 +1,4 @@
-# Libas Mehar — Setup Guide
+# Anwar Clothing — Setup Guide
 
 A custom-built clothing store (fabric, leather, fragrance, gift boxes) modeled on the
 structure of bilalmarth7.pk — disciplines nav, houses/collections, bestsellers,

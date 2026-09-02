@@ -1,6 +1,6 @@
-# Libas Mehar — Render Deployment Guide
+# Anwar Clothing — Render Deployment Guide
 
-This guide walks you through deploying **Libas Mehar (Anwar Clothing)** to **Render**.
+This guide walks you through deploying **Anwar Clothing** to **Render**.
 
 Render provides free tiers for:
 - 🗄️ **PostgreSQL Database**

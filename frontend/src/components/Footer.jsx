@@ -107,7 +107,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link to="/" className="font-display text-2xl text-ivory block mb-4">
-              Libas <span className="italic text-brass">Mehar</span>
+              Anwar <span className="italic text-brass">Clothing</span>
             </Link>
             <p className="text-sm text-ivory/60 leading-relaxed mb-6 max-w-xs">
               {t('footer.description')}
